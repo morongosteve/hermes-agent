@@ -146,8 +146,8 @@ FilmStock
 ```
 
 Built-in stocks include **Portra 400/160, Gold 200, Ektar 100, Pro 400H,
-CineStill 800T, Velvia 50, Ektachrome E100, Tri-X 400, HP5 Plus** — honest
-characterisations to start from.
+Superia X-TRA 400, CineStill 800T, Velvia 50, Ektachrome E100, Tri-X 400,
+HP5 Plus** — eleven honest characterisations to start from.
 
 ### Combination edits (the point)
 

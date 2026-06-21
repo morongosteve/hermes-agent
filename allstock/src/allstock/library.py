@@ -106,6 +106,20 @@ def _build() -> Dict[str, FilmStock]:
         development=Development(process="C-41"),
     )
 
+    stocks["superia400"] = FilmStock(
+        name="Fujifilm Superia X-TRA 400", maker="Fujifilm", iso=400, year=1998,
+        process_family=COLOR_NEGATIVE,
+        description="Punchy consumer Fuji negative: signature vivid greens, cooler "
+                    "slightly cyan shadows, more contrast and grain than the pro stocks.",
+        spectral=_spectral(0.90, 0.05),
+        curves=_curves(2.2, 0.60, r=-0.02, g=0.02, b=0.02, toe=0.18, shoulder=0.24),
+        grain=Grain(rms=0.024, size=1.25, chroma=0.36),
+        halation=Halation(strength=0.07, radius=11, threshold=0.76),
+        optics=Optics(acutance=0.24),
+        print_=Print(gamma=1.62, balance=(0.98, 1.03, 1.0), saturation=1.22),
+        development=Development(process="C-41"),
+    )
+
     stocks["pro400h"] = FilmStock(
         name="Fujifilm Pro 400H", maker="Fujifilm", iso=400, year=2004,
         process_family=COLOR_NEGATIVE,
