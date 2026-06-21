@@ -1,23 +1,23 @@
-"""AnalogForge — physically-grounded analog film emulation, a film-stock
+"""AllStock — physically-grounded analog film emulation, a film-stock
 designer, an analog knowledge base, and analog-aware image generation.
 
 Replicate film from emulsion to dried negative, and forge your own stocks.
 
 Quick start
 -----------
->>> from analogforge import library, engine
+>>> from allstock import library, engine
 >>> stock = library.get_stock("portra400")
 >>> engine.develop_file("in.jpg", "out.jpg", stock)            # doctest: +SKIP
 
 Forge a new stock
 -----------------
->>> from analogforge import designer
+>>> from allstock import designer
 >>> custom = designer.blend(library.get_stock("portra400"),
 ...                         library.get_stock("velvia50"), 0.3)
 
 Generate + truly develop
 ------------------------
->>> from analogforge import generate                            # doctest: +SKIP
+>>> from allstock import generate                            # doctest: +SKIP
 >>> pos, info = generate.generate_and_develop("a misty harbour at dawn",
 ...     library.get_stock("cinestill800t"), provider="zai")     # doctest: +SKIP
 """

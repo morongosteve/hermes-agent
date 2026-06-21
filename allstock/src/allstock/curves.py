@@ -41,7 +41,7 @@ def density_from_log_exposure(log_e: np.ndarray, curve: ChannelCurve,
     log_e:
         Array of log10 exposure values (typically about -3..0 for a normal scene).
     curve:
-        The :class:`~analogforge.stock.ChannelCurve` for this layer.
+        The :class:`~allstock.stock.ChannelCurve` for this layer.
     gamma_gain:
         Additional contrast added by development (push processing). Positive
         values steepen the straight-line section, as longer development does.

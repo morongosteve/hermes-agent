@@ -1,7 +1,7 @@
 import numpy as np
 
-from analogforge import designer, library
-from analogforge.stock import FilmStock
+from allstock import designer, library
+from allstock.stock import FilmStock
 
 
 def test_blend_endpoints_and_midpoint():

@@ -13,7 +13,7 @@ in the knowledge base:
     7. optics                 – acutance, softness, vignette
 
 Negative, reversal (slide) and black-and-white films all flow through the same
-code; their differences live entirely in the :class:`~analogforge.stock.FilmStock`
+code; their differences live entirely in the :class:`~allstock.stock.FilmStock`
 parameters.
 """
 

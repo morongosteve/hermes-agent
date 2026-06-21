@@ -1,7 +1,7 @@
 """Analog-aware image generation.
 
 Reve and its peers can *generate* but they cannot give you real analog control,
-and their output is often described as flat and literal. AnalogForge closes both
+and their output is often described as flat and literal. AllStock closes both
 gaps:
 
 1. **Analog intent.** :func:`build_analog_prompt` turns a subject plus a chosen
@@ -9,7 +9,7 @@ gaps:
    pointed at photographic reality (stock name, ISO, process, palette, grain,
    halation). This already biases the generator toward a film look.
 2. **Physical truth.** :func:`generate_and_develop` then runs the generated image
-   through the real :mod:`analogforge.engine`, so the result carries genuine
+   through the real :mod:`allstock.engine`, so the result carries genuine
    characteristic-curve tonality, signal-dependent grain and halation — not a
    baked-in "filter".
 
@@ -126,7 +126,7 @@ def _requests():
     except ImportError as e:  # pragma: no cover
         raise RuntimeError(
             "Network image generation needs the 'requests' package. "
-            "Install with: pip install 'analogforge[generate]'"
+            "Install with: pip install 'allstock[generate]'"
         ) from e
 
 
