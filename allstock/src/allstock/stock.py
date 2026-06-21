@@ -5,7 +5,7 @@ photographic film. Every stock — whether a faithful model of a real emulsion
 (Portra 400, Tri-X...) or one a user *forges* from scratch — is described by the
 same set of parameters. Because the description is fully numeric and structured,
 two stocks can be blended, crossed, or mutated to create new ones (see
-:mod:`analogforge.designer`). This is the customisation freedom that closed
+:mod:`allstock.designer`). This is the customisation freedom that closed
 generators deliberately withhold.
 
 The parameter groups follow the real imaging chain:
@@ -20,7 +20,7 @@ The parameter groups follow the real imaging chain:
        -> print / scan transform back to a positive image        (``print_``)
 
 Nothing here is a magic "filter": each field maps to a documented effect in the
-:mod:`analogforge.knowledge` base.
+:mod:`allstock.knowledge` base.
 """
 
 from __future__ import annotations
@@ -166,7 +166,7 @@ class FilmStock:
     """A complete film stock. See module docstring for the parameter groups."""
 
     name: str = "Custom Stock"
-    maker: str = "AnalogForge"
+    maker: str = "AllStock"
     iso: int = 400
     process_family: str = COLOR_NEGATIVE
     year: Optional[int] = None

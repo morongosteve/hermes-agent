@@ -3,13 +3,13 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "analogforge"
+name = "allstock"
 version = "0.1.0"
 description = "Physically-grounded analog film emulation engine, film-stock designer, and analog-aware image generation — replicate film from emulsion to dried negative, and forge your own stocks."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
-authors = [{ name = "AnalogForge" }]
+authors = [{ name = "AllStock" }]
 keywords = [
     "film", "analog", "emulation", "photography", "darkroom",
     "film-simulation", "halation", "grain", "characteristic-curve",
@@ -33,17 +33,17 @@ generate = ["requests>=2.25"]
 dev = ["pytest>=7.0"]
 
 [project.scripts]
-analogforge = "analogforge.cli:main"
+allstock = "allstock.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/analogforge/analogforge"
-Documentation = "https://github.com/analogforge/analogforge#readme"
+Homepage = "https://github.com/allstock/allstock"
+Documentation = "https://github.com/allstock/allstock#readme"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/analogforge"]
+packages = ["src/allstock"]
 
 [tool.hatch.build.targets.wheel.force-include]
-"src/analogforge/data" = "analogforge/data"
+"src/allstock/data" = "allstock/data"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -1,8 +1,8 @@
 import numpy as np
 
-from analogforge import knowledge, library
-from analogforge.cli import main
-from analogforge.generate import build_analog_prompt, generate_and_develop, get_provider
+from allstock import knowledge, library
+from allstock.cli import main
+from allstock.generate import build_analog_prompt, generate_and_develop, get_provider
 
 
 # ---- generation (offline) ------------------------------------------------

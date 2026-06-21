@@ -1,4 +1,4 @@
-# AnalogForge
+# AllStock
 
 **Physically-grounded analog film emulation, a film-stock designer, an analog
 knowledge base, and analog-aware image generation — in one Python engine.**
@@ -18,7 +18,7 @@ two limitations come up again and again in their own analyses:
 2. **Flat, literal rendering** — outputs are often described as lacking the
    tonal depth and "physics" of real photography.
 
-AnalogForge is built as the deliberate inverse of those gaps, specialised for
+AllStock is built as the deliberate inverse of those gaps, specialised for
 **analog film**:
 
 - **Physical truth instead of filters.** Every effect comes from simulating a
@@ -55,30 +55,30 @@ Python ≥ 3.9. Core dependencies are just **NumPy** and **Pillow**.
 
 ```bash
 # Develop a photo on Kodak Portra 400
-analogforge develop photo.jpg -o portra.jpg --stock portra400
+allstock develop photo.jpg -o portra.jpg --stock portra400
 
 # Push CineStill 800T two stops and watch the halation bloom
-analogforge develop night.jpg --stock cinestill800t --push 2
+allstock develop night.jpg --stock cinestill800t --push 2
 
 # List and inspect stocks
-analogforge stocks
-analogforge stocks --show velvia50
+allstock stocks
+allstock stocks --show velvia50
 
 # Forge your own stock: 30% of the way from Portra toward Velvia
-analogforge design blend portra400 velvia50 -t 0.3 -o my_stocks/portra_velvia.json
-analogforge develop photo.jpg --stock my_stocks/portra_velvia.json
+allstock design blend portra400 velvia50 -t 0.3 -o my_stocks/portra_velvia.json
+allstock develop photo.jpg --stock my_stocks/portra_velvia.json
 
 # Cross-breed: Ektachrome tone, Tri-X grain, CineStill halation
-analogforge design cross ektachrome100 --grain trix400 --halation cinestill800t -o frankenfilm.json
+allstock design cross ektachrome100 --grain trix400 --halation cinestill800t -o frankenfilm.json
 
 # Generate an image and truly develop it on film (Z.ai by default)
 export ZAI_API_KEY=...        # or run offline with: --provider null
-analogforge generate "a rain-slick neon alley at midnight" --stock cinestill800t -o alley.png
+allstock generate "a rain-slick neon alley at midnight" --stock cinestill800t -o alley.png
 
 # Learn the craft
-analogforge learn                       # list topics
-analogforge learn characteristic-curve  # read one
-analogforge learn --search halation
+allstock learn                       # list topics
+allstock learn characteristic-curve  # read one
+allstock learn --search halation
 ```
 
 ---
@@ -86,7 +86,7 @@ analogforge learn --search halation
 ## Quick start (Python)
 
 ```python
-from analogforge import library, engine, designer
+from allstock import library, engine, designer
 
 # Develop
 stock = library.get_stock("portra400")
@@ -101,7 +101,7 @@ custom = designer.adjust(custom, **{"halation.strength": 0.2})
 custom.save("my_stocks/golden_ektar.json")
 
 # Generate + develop
-from analogforge import generate
+from allstock import generate
 positive, info = generate.generate_and_develop(
     "a misty harbour at dawn", stock, provider="zai")   # or provider="null" offline
 ```
@@ -112,7 +112,7 @@ See `examples/demo.py` for a contact sheet across every stock (runs offline).
 
 ## How the engine works
 
-The pipeline follows the real imaging chain (full detail in `analogforge learn`):
+The pipeline follows the real imaging chain (full detail in `allstock learn`):
 
 | Stage | Module | Knowledge note |
 |------|--------|----------------|
@@ -165,7 +165,7 @@ ranges.
 ## Learn the craft
 
 A grounded knowledge base ships with the package and is readable from the CLI
-(`analogforge learn`) or `analogforge.knowledge`:
+(`allstock learn`) or `allstock.knowledge`:
 
 `overview · emulsion · layers · spectral-sensitivity · latent-image ·
 characteristic-curve · grain · halation · color-negative · development ·
@@ -195,7 +195,7 @@ pytest
 
 ## Status & honesty
 
-AnalogForge models the **perceptual consequences** of the photographic process —
+AllStock models the **perceptual consequences** of the photographic process —
 a faithful, *editable* approximation, not a molecular simulation of emulsion
 chemistry. Built-in stock parameters are characterisations, not exact datasheet
 transcriptions; the knowledge notes flag where figures are approximate. This is

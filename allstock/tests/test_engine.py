@@ -1,11 +1,11 @@
 import numpy as np
 import pytest
 
-from analogforge import library
-from analogforge.curves import density_from_log_exposure, scene_to_log_exposure
-from analogforge.engine import DevelopOptions, develop_array
-from analogforge.imaging import linear_to_srgb, srgb_to_linear
-from analogforge.stock import ChannelCurve
+from allstock import library
+from allstock.curves import density_from_log_exposure, scene_to_log_exposure
+from allstock.engine import DevelopOptions, develop_array
+from allstock.imaging import linear_to_srgb, srgb_to_linear
+from allstock.stock import ChannelCurve
 
 
 def _scene(h=48, w=64):

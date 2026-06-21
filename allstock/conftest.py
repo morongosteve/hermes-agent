@@ -1,4 +1,4 @@
-"""Make ``src/analogforge`` importable in tests without an install step."""
+"""Make ``src/allstock`` importable in tests without an install step."""
 import sys
 from pathlib import Path
 

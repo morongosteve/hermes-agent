@@ -2,7 +2,7 @@
 
 This is the capability closed generators deliberately withhold: real, granular
 control over the *look*, expressed as new film stocks you own and reuse. Because
-a :class:`~analogforge.stock.FilmStock` is a fully numeric description, we can:
+a :class:`~allstock.stock.FilmStock` is a fully numeric description, we can:
 
 * **blend** two stocks along a continuum (``t`` from 0..1);
 * **mix** several stocks with arbitrary weights;
@@ -77,7 +77,7 @@ def blend(a: FilmStock, b: FilmStock, t: float = 0.5,
     out = base.with_values(blended)
     out.process_family = (a if t < 0.5 else b).process_family
     out.name = name or f"{a.name} x {b.name} ({int(round(t * 100))}%)"
-    out.maker = "AnalogForge"
+    out.maker = "AllStock"
     out.year = None
     out.lineage = [a.name, b.name]
     out.description = f"Blend of {a.name} and {b.name} at t={t:.2f}."
@@ -107,7 +107,7 @@ def mix(stocks: List[FilmStock], weights: Optional[List[float]] = None,
     out = base.with_values(acc)
     out.process_family = base.process_family
     out.name = name or "Mixed Stock"
-    out.maker = "AnalogForge"
+    out.maker = "AllStock"
     out.year = None
     out.lineage = [s.name for s in stocks]
     out.description = "Weighted mix of " + ", ".join(
@@ -150,7 +150,7 @@ def cross(base: FilmStock, *, curves: Optional[FilmStock] = None,
         sources.append(f"development:{development.name}")
 
     out.name = name or f"Cross of {base.name}"
-    out.maker = "AnalogForge"
+    out.maker = "AllStock"
     out.year = None
     out.lineage = [base.name] + sources
     out.description = "Crossed " + base.name + " with " + ", ".join(sources)
@@ -176,7 +176,7 @@ def mutate(stock: FilmStock, amount: float = 0.15, seed: int = 0,
         mutated[k] = v * rel + absol
     out = stock.with_values(mutated)
     out.name = name or f"{stock.name} (mutation {seed})"
-    out.maker = "AnalogForge"
+    out.maker = "AllStock"
     out.year = None
     out.lineage = [stock.name]
     out.description = f"Mutation of {stock.name} (amount={amount}, seed={seed})."

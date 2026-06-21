@@ -1,7 +1,7 @@
 """Access to the analog-film knowledge base.
 
 The knowledge base is a set of grounded Markdown notes covering the real imaging
-chain from emulsion to dried negative. Each note also explains *how AnalogForge
+chain from emulsion to dried negative. Each note also explains *how AllStock
 models that stage*, so the science and the code stay tied together. Content is
 written to be accurate; where a quantity is approximate it is flagged as such.
 """
@@ -15,7 +15,7 @@ from typing import Dict, List, Tuple
 def _knowledge_dir() -> Path:
     try:
         from importlib.resources import files
-        p = Path(str(files("analogforge"))) / "data" / "knowledge"
+        p = Path(str(files("allstock"))) / "data" / "knowledge"
         if p.is_dir():
             return p
     except Exception:

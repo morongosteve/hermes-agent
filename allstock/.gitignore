@@ -20,7 +20,7 @@ htmlcov/
 .idea/
 .vscode/
 
-# AnalogForge user data
+# AllStock user data
 *.png.out
 out/
 my_stocks/

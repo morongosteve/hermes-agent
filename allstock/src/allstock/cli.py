@@ -1,10 +1,10 @@
-"""Command-line interface for AnalogForge.
+"""Command-line interface for AllStock.
 
-    analogforge develop  IN -o OUT --stock portra400 [--exposure +1 --push 2]
-    analogforge stocks   [--show portra400]
-    analogforge design   blend portra400 velvia50 -t 0.3 -o my.json
-    analogforge generate "a neon street at night" --stock cinestill800t -o out.png
-    analogforge learn    [topic | --search grain]
+    allstock develop  IN -o OUT --stock portra400 [--exposure +1 --push 2]
+    allstock stocks   [--show portra400]
+    allstock design   blend portra400 velvia50 -t 0.3 -o my.json
+    allstock generate "a neon street at night" --stock cinestill800t -o out.png
+    allstock learn    [topic | --search grain]
 """
 
 from __future__ import annotations
@@ -70,7 +70,7 @@ def cmd_stocks(args) -> int:
     for key in library.list_stocks():
         s = library.get_stock(key)
         print(f"  {key:16s} {s.name}  (ISO {s.iso}, {s.process_family})")
-    print("\nShow details:  analogforge stocks --show <key>")
+    print("\nShow details:  allstock stocks --show <key>")
     return 0
 
 
@@ -168,8 +168,8 @@ def cmd_learn(args) -> int:
     print("Analog film knowledge base:\n")
     for slug, title in knowledge.list_topics():
         print(f"  {slug:24s} {title}")
-    print("\nRead one:   analogforge learn <slug>")
-    print("Search:     analogforge learn --search <query>")
+    print("\nRead one:   allstock learn <slug>")
+    print("Search:     allstock learn --search <query>")
     return 0
 
 
@@ -188,7 +188,7 @@ def _parse_size(size: Optional[str], width: int, height: int):
 # --------------------------------------------------------------------------
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        prog="analogforge",
+        prog="allstock",
         description="Physically-grounded analog film emulation, a film-stock "
                     "designer, an analog knowledge base, and analog-aware generation.",
     )
@@ -279,7 +279,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     args = parser.parse_args(argv)
     if getattr(args, "version", False):
         from . import __version__
-        print(f"analogforge {__version__}")
+        print(f"allstock {__version__}")
         return 0
     if not getattr(args, "command", None):
         parser.print_help()
