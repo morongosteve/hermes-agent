@@ -25,4 +25,14 @@ htmlcov/
 out/
 my_stocks/
 *.tiff
+
+# The repository-root .gitignore broadly ignores `data/` and `examples/`.
+# Those directories are real, tracked parts of this package (the knowledge
+# base and the offline demo), so re-include them here.
+!src/allstock/data/
+!src/allstock/data/**
+!examples/
+!examples/**
+
+# ...but still never commit generated demo output.
 examples/output/
