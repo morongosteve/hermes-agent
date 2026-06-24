@@ -647,6 +647,7 @@ COMMANDS = {
     "/config": "Show current configuration",
     "/cron": "Manage scheduled tasks (list, add, remove)",
     "/skills": "Search, install, inspect, or manage skills from online registries",
+    "/learn": "Distill a source directory into a new SKILL.md",
     "/platforms": "Show gateway/messaging platform status",
     "/quit": "Exit the CLI (also: /exit, /q)",
 }
@@ -1515,6 +1516,11 @@ class HermesCLI:
         from hermes_cli.skills_hub import handle_skills_slash
         handle_skills_slash(cmd, self.console)
 
+    def _handle_learn_command(self, cmd: str):
+        """Handle /learn slash command — delegates to hermes_cli.learn."""
+        from hermes_cli.learn import handle_learn_slash
+        handle_learn_slash(cmd, self.console)
+
     def _show_gateway_status(self):
         """Show status of the gateway and connected messaging platforms."""
         from gateway.config import load_gateway_config, Platform
@@ -1648,6 +1654,8 @@ class HermesCLI:
             self._handle_cron_command(cmd_original)
         elif cmd_lower.startswith("/skills"):
             self._handle_skills_command(cmd_original)
+        elif cmd_lower.startswith("/learn"):
+            self._handle_learn_command(cmd_original)
         elif cmd_lower == "/platforms" or cmd_lower == "/gateway":
             self._show_gateway_status()
         else:

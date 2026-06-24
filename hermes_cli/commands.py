@@ -24,6 +24,7 @@ COMMANDS = {
     "/config": "Show current configuration",
     "/cron": "Manage scheduled tasks (list, add, remove)",
     "/skills": "Search, install, inspect, or manage skills from online registries",
+    "/learn": "Distill a source directory into a new SKILL.md",
     "/platforms": "Show gateway/messaging platform status",
     "/quit": "Exit the CLI (also: /exit, /q)",
 }
