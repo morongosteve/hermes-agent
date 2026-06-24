@@ -89,6 +89,29 @@ def _as_list(value: Any) -> Optional[List[str]]:
     return None
 
 
+# The AIAgent class is imported once and cached. The import MUST happen on the
+# main thread: importing the agent pulls in tools.browser_tool, which registers
+# SIGINT/SIGTERM handlers at import time, and signal.signal() only works on the
+# main thread. main() warms this at startup; if it hasn't run (e.g. embedded
+# use), the first call here still works as long as it's on the main thread.
+_AGENT_CLS = None
+_AGENT_IMPORT_ERROR: Optional[BaseException] = None
+
+
+def load_agent_class():
+    """Import and cache the AIAgent class (idempotent). Raises if unavailable."""
+    global _AGENT_CLS, _AGENT_IMPORT_ERROR
+    if _AGENT_CLS is None and _AGENT_IMPORT_ERROR is None:
+        try:
+            from run_agent import AIAgent
+            _AGENT_CLS = AIAgent
+        except BaseException as exc:  # noqa: BLE001 - surfaced to caller below
+            _AGENT_IMPORT_ERROR = exc
+    if _AGENT_IMPORT_ERROR is not None:
+        raise RuntimeError(f"agent backend unavailable: {_AGENT_IMPORT_ERROR}")
+    return _AGENT_CLS
+
+
 def build_agent(
     *,
     model: Optional[str] = None,
@@ -101,11 +124,11 @@ def build_agent(
     """Construct a fresh AIAgent for a single request.
 
     A new agent per request mirrors the gateway pattern in this repo and keeps
-    concurrent requests free of shared mutable state. The import is local so the
-    process can still answer /health even if the agent's heavy dependencies are
-    unavailable.
+    concurrent requests free of shared mutable state. The class is loaded via the
+    cached, main-thread-warmed importer so /health stays up even if the agent's
+    heavy dependencies are unavailable.
     """
-    from run_agent import AIAgent
+    AIAgent = load_agent_class()
 
     return AIAgent(
         model=model or DEFAULT_MODEL,
@@ -327,6 +350,17 @@ class HermesHandler(BaseHTTPRequestHandler):
 
 
 def main() -> None:
+    # Warm the agent import on the MAIN thread before serving. The agent registers
+    # signal handlers at import time, which is only valid on the main thread; doing
+    # it here keeps the threaded request handlers from tripping over it. A failure
+    # is non-fatal — /health and / still respond, and agent endpoints report it.
+    try:
+        load_agent_class()
+        print("Hermes agent backend loaded.", flush=True)
+    except Exception as exc:  # noqa: BLE001
+        print(f"WARNING: agent backend failed to load ({exc}); "
+              f"health/info still served, agent endpoints will return 500.", flush=True)
+
     server = ThreadingHTTPServer((HOST, PORT), HermesHandler)
     auth = "on" if SERVER_API_KEY else "off"
     print(
