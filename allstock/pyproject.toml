@@ -30,10 +30,12 @@ dependencies = [
 
 [project.optional-dependencies]
 generate = ["requests>=2.25"]
-dev = ["pytest>=7.0"]
+dev = ["pytest>=7.0", "httpx>=0.24"]
+server = ["fastapi>=0.110", "uvicorn[standard]>=0.27", "python-multipart>=0.0.9"]
 
 [project.scripts]
 allstock = "allstock.cli:main"
+allstock-server = "allstock.server.app:run"
 
 [project.urls]
 Homepage = "https://github.com/allstock/allstock"
