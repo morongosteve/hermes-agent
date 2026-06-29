@@ -185,6 +185,27 @@ Set the relevant key: `ZAI_API_KEY` (or `ZHIPUAI_API_KEY`), `OPENAI_API_KEY`,
 
 ---
 
+## Native app & HTTP API
+
+Two starting points for putting AllStock on iOS (see
+[`docs/IOS_APP_STORE.md`](docs/IOS_APP_STORE.md) for the full path to the App
+Store):
+
+- **HTTP API** (`allstock.server`) — a FastAPI service wrapping the engine, so a
+  thin client can develop photos, forge stocks and read the knowledge base:
+
+  ```bash
+  pip install -e ".[server,generate]"
+  allstock-server                       # uvicorn allstock.server.app:app
+  curl -F file=@photo.jpg -F stock=portra400 localhost:8000/develop -o out.png
+  ```
+
+- **Native Swift port** (`ios/`) — `AllStockKit`, a faithful CPU port of the
+  engine (it decodes the *same* stock JSON), plus a SwiftUI app scaffold. Test
+  it with `cd ios/AllStockKit && swift test`. See [`ios/README.md`](ios/README.md).
+
+---
+
 ## Tests
 
 ```bash
