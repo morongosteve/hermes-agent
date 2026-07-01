@@ -1184,6 +1184,26 @@ For more help on a command:
     skills_parser.set_defaults(func=cmd_skills)
 
     # =========================================================================
+    # learn command
+    # =========================================================================
+    learn_parser = subparsers.add_parser(
+        "learn",
+        help="Distill a source directory into a standardized SKILL.md",
+        description="Recursively ingest docs/code/configs from a path and distill them into one SKILL.md under ~/.hermes/skills/.",
+    )
+    learn_parser.add_argument("path", help="File or directory to ingest (space-separated paths allowed)")
+    learn_parser.add_argument("--name", "-n", default="", help="Override the distilled skill name")
+    learn_parser.add_argument("--category", "-c", default="", help="Category folder to write the skill into")
+    learn_parser.add_argument("--force", action="store_true", help="Overwrite an existing skill of the same name")
+    learn_parser.add_argument("--offline", action="store_true", help="Skip the model; use the deterministic heuristic distiller")
+
+    def cmd_learn(args):
+        from hermes_cli.learn import learn_command
+        learn_command(args)
+
+    learn_parser.set_defaults(func=cmd_learn)
+
+    # =========================================================================
     # tools command
     # =========================================================================
     tools_parser = subparsers.add_parser(
