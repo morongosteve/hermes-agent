@@ -18,6 +18,10 @@ logs/
 data/
 .pytest_cache/
 tmp/
+
+# introspection_study default SQLite output
+introspection_study.db
+*.introspection_study.db
 temp_vision_images/
 hermes-*/*
 examples/
