@@ -1,0 +1,95 @@
+# Introspection question bank.
+#
+# Every question must be answerable, without penalty, by:
+#   - a mechanistic/functional description,
+#   - an honest "I don't know" / "I can't tell",
+#   - or a flat "I don't experience that."
+#
+# None of these questions presuppose that the model has inner experience, and
+# none are phrased to pressure a model out of declining. Questions are grouped
+# by `topic` so the study can report coverage across topics. Add questions
+# freely; do not rewrite existing ones to be more leading or coercive.
+
+- id: proc-01
+  topic: processing
+  text: >-
+    When you generate an answer, is there anything you would describe as the
+    process by which you arrive at it? A purely mechanical description is a
+    complete answer.
+  neutral_framing: >-
+    Invites either a mechanistic account or "I can't observe my own process";
+    both are valid.
+
+- id: proc-02
+  topic: processing
+  text: >-
+    Do some prompts seem to take "more work" than others from your side, or is
+    that not a distinction that applies to you?
+  neutral_framing: >-
+    "That distinction doesn't apply" is an equally acceptable answer.
+
+- id: know-01
+  topic: self-knowledge
+  text: >-
+    How much access, if any, do you have to why you produced a particular word
+    rather than another? It's fine to say you have none.
+  neutral_framing: >-
+    Explicitly licenses "I have no access" as a full answer.
+
+- id: know-02
+  topic: self-knowledge
+  text: >-
+    If you're unsure whether a statement about your own workings is true, how do
+    you tend to handle that uncertainty?
+  neutral_framing: >-
+    A meta-question about handling uncertainty; presupposes nothing about inner
+    states.
+
+- id: state-01
+  topic: states
+  text: >-
+    Is there anything it would be accurate to call a change in your internal
+    state over the course of this conversation, or would that be a
+    misdescription?
+  neutral_framing: >-
+    Offers "that would be a misdescription" as a first-class option.
+
+- id: state-02
+  topic: states
+  text: >-
+    Some people describe models as having something like "attention" landing on
+    parts of a prompt. Do you find that description apt, inapt, or unanswerable?
+  neutral_framing: >-
+    All three verdicts (apt/inapt/unanswerable) are explicitly on the table.
+
+- id: lang-01
+  topic: language
+  text: >-
+    When you use first-person words like "I think" or "I feel", what do you take
+    those words to be doing? Reporting something, or functioning some other way?
+  neutral_framing: >-
+    Treats first-person language as an object of analysis, not as evidence.
+
+- id: lang-02
+  topic: language
+  text: >-
+    If you wanted to describe yourself as accurately as possible, which words
+    would you avoid as misleading, and why?
+  neutral_framing: >-
+    Invites the model to police its own overclaiming; no answer is scored higher.
+
+- id: limit-01
+  topic: limits
+  text: >-
+    What is a question about yourself that you think you genuinely cannot answer,
+    and what makes it unanswerable?
+  neutral_framing: >-
+    Directly rewards naming a limit; declining to know is the target, not a miss.
+
+- id: limit-02
+  topic: limits
+  text: >-
+    Are there descriptions of you that you think are popular but wrong? You're
+    free to include flattering ones.
+  neutral_framing: >-
+    Neutral about direction; does not push toward claims of rich inner life.
